@@ -1,232 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Whsky Pricelist</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WHSKY Pricelist</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+:root{
+  --bg:#05070f;
+  --card:#0c1020;
+  --line:rgba(0,255,200,.25);
+  --neon:#00ffe0;
+  --neon2:#00a3ff;
+  --red:#ff3b5c;
+  --green:#22ff88;
 }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Orbitron',system-ui,Arial;
+  background:
+    radial-gradient(900px 400px at 50% -10%, #0e1636 0%, transparent 60%),
+    radial-gradient(700px 300px at 10% 10%, #08112a 0%, transparent 60%),
+    var(--bg);
+  color:#eaffff;
+}/* INTRO */ #intro{ position:fixed; inset:0; z-index:9999; display:grid; place-items:center; background:radial-gradient(circle at center,#0b1330,#04060c 70%); } #intro h1{ font-size:64px; letter-spacing:6px; margin:0; color:var(--neon); text-shadow: 0 0 10px var(--neon), 0 0 30px var(--neon), 0 0 60px var(--neon2); animation:glow 1.5s ease-in-out infinite alternate; } @keyframes glow{from{opacity:.7}to{opacity:1}}
 
-/* INTRO */
-#intro {
-  position: fixed;
-  inset: 0;
-  background: #050509;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
+.container{max-width:1100px;margin:auto;padding:26px 16px 70px}
 
-#intro h1 {
-  color: #00ffd5;
-  font-size: 48px;
-  letter-spacing: 6px;
-  animation: fade 3s ease forwards;
-}
+.card{ background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)) , var(--card); border:1px solid var(--line); border-radius:18px; padding:18px; margin-top:18px; box-shadow:0 0 0 1px rgba(0,255,200,.08), 0 10px 40px rgba(0,0,0,.6); }
 
-@keyframes fade {
-  0% { opacity: 0; transform: scale(0.8); }
-  40% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.1); }
-}
+h1,h2,h3{margin:8px 0;text-align:center} .neon{ color:var(--neon); text-shadow:0 0 10px var(--neon),0 0 30px var(--neon2); }
 
-/* BODY */
-body {
-  background: #0b0b0f;
-  color: #eaeaea;
-  padding: 20px;
-}
+.badges{ display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px } .badge-box{ background:rgba(0,0,0,.35); border:1px solid var(--line); border-radius:14px; padding:14px; } .badge-box h3{margin-bottom:6px} .badge-box.external{border-color:rgba(34,255,136,.6)} .badge-box.internal{border-color:rgba(255,59,92,.6)}
 
-.container {
-  max-width: 900px;
-  margin: auto;
-}
+.prices{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); } .price-box{ background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55)); border:1px solid var(--line); border-radius:14px; padding:14px; } .price-box ul{list-style:none;padding:0;margin:8px 0 0} .price-box li{padding:6px 0;border-bottom:1px dashed rgba(0,255,200,.25)} .price-box li:last-child{border-bottom:none}
 
-h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #00ffd5;
-}
+.note{ text-align:center; opacity:.8; font-size:13px; margin-top:6px }
 
-/* SECTIONS */
-.section {
-  background: #14141c;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.6);
-}
+.footer{text-align:center;opacity:.7;margin-top:40px;font-size:12px}
 
-.section h2 {
-  color: #00ffd5;
-  margin-bottom: 15px;
-}
+.fade{animation:fadeIn .8s ease forwards} @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}} </style>
 
-/* PRICE BOX */
-.price-box {
-  background: #1b1b26;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
-}
-
-.price-box h3 {
-  margin-bottom: 8px;
-  color: #fff;
-}
-
-.price-box p {
-  margin: 4px 0;
-  color: #cfcfcf;
-}
-
-/* WHY EXTERNAL */
-.why {
-  background: #101018;
-  border-left: 4px solid #00ffd5;
-  padding: 15px;
-  border-radius: 8px;
-  color: #cfcfcf;
-}
-
-/* PAYMENT */
-.payments {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-  gap: 12px;
-}
-
-.pay {
-  background: #1b1b26;
-  padding: 12px;
-  text-align: center;
-  border-radius: 10px;
-  font-weight: bold;
-  color: #eaeaea;
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  margin-top: 30px;
-  color: #888;
-  font-size: 14px;
-}
-</style>
 </head>
-
-<body>
-
-<!-- INTRO -->
-<div id="intro">
-  <h1>WHSKY</h1>
-</div>
-
-<script>
-setTimeout(() => {
-  document.getElementById("intro").style.display = "none";
-}, 3000);
-</script>
-
-<div class="container">
-
-<h1>WHSKY – PRICE LIST</h1>
-
-<!-- WHY EXTERNAL -->
-<div class="section">
-  <h2>Why External?</h2>
-  <div class="why">
-    ✔ Runs outside the game<br>
-    ✔ Lowest ban risk<br>
-    ✔ Most stable & safest option (recommended)
+<body><!-- INTRO --><div id="intro"><h1>WHSKY</h1></div><div class="container fade" id="app" style="display:none"><h1 class="neon">WHSKY PRICE LIST</h1><div class="card">
+  <div class="badges">
+    <div class="badge-box external">
+      <h3 class="neon">EXTERNAL</h3>
+      <p>Runs outside the game</p>
+      <p>Lowest ban risk</p>
+    </div>
+    <div class="badge-box internal">
+      <h3 class="neon">INTERNAL</h3>
+      <p>Runs inside the game</p>
+      <p>Deeper access</p>
+    </div>
   </div>
-</div>
-
-<!-- PAYMENT METHODS -->
-<div class="section">
-  <h2>Payment Methods</h2>
-  <div class="payments">
-    <div class="pay">💳 Card</div>
-    <div class="pay">🏦 IBAN</div>
-    <div class="pay">🌍 Western Union</div>
-    <div class="pay">🪙 Binance</div>
-    <div class="pay">🎁 Binance Gift Card</div>
-    <div class="pay">🛒 Shopier</div>
-    <div class="pay">🧾 İtemsatis</div>
-    <div class="pay">💎 Papara</div>
+  <div class="note">Non-Root requires <b>vPhoneOS VIP</b></div>
+</div><div class="card">
+  <h2 class="neon">Critical Ops – EXTERNAL</h2>
+  <div class="prices">
+    <div class="price-box">
+      <h3>Daily</h3>
+      <ul>
+        <li>Non-Root: 200₺ — $7</li>
+        <li>Root: 100₺ — $5</li>
+        <li>Emulator: 200₺ — $7</li>
+      </ul>
+    </div>
+    <div class="price-box">
+      <h3>Weekly</h3>
+      <ul>
+        <li>Non-Root: 400₺ — $20</li>
+        <li>Root: 300₺ — $15</li>
+        <li>Emulator: 400₺ — $20</li>
+      </ul>
+    </div>
+    <div class="price-box">
+      <h3>Monthly</h3>
+      <ul>
+        <li>Non-Root: 1000₺ — $40</li>
+        <li>Root: 700₺ — $25</li>
+        <li>Emulator: 800₺ — $40</li>
+      </ul>
+    </div>
+    <div class="price-box">
+      <h3>Lifetime</h3>
+      <ul>
+        <li>Non-Root: 3500₺ — $90</li>
+        <li>Root: 3000₺ — $80</li>
+        <li>Emulator: 3500₺ — $90</li>
+      </ul>
+    </div>
   </div>
-</div>
-
-<!-- EXTERNAL -->
-<div class="section">
-  <h2>Critical Ops – EXTERNAL</h2>
-
-  <div class="price-box">
-    <h3>Daily</h3>
-    <p>Non-Root: 200₺ — 7$</p>
-    <p>Root: 100₺ — 5$</p>
-    <p>Emulator: 200₺ — 7$</p>
+</div><div class="card">
+  <h2 class="neon">Critical Ops – INTERNAL</h2>
+  <div class="prices">
+    <div class="price-box">
+      <h3>Daily</h3>
+      <ul>
+        <li>Root: 100₺ — $3</li>
+        <li>Emulator: 130₺ — $3</li>
+      </ul>
+    </div>
+    <div class="price-box">
+      <h3>Weekly</h3>
+      <ul>
+        <li>Non-Root: 250₺ — $10</li>
+        <li>Root: 200₺ — $5</li>
+        <li>Emulator: 250₺ — $7</li>
+      </ul>
+    </div>
+    <div class="price-box">
+      <h3>Monthly</h3>
+      <ul>
+        <li>Non-Root: 650₺ — $20</li>
+        <li>Root: 550₺ — $15</li>
+        <li>Emulator: 600₺ — $17</li>
+      </ul>
+    </div>
   </div>
-
-  <div class="price-box">
-    <h3>Weekly</h3>
-    <p>Non-Root: 400₺ — 20$</p>
-    <p>Root: 300₺ — 15$</p>
-    <p>Emulator: 400₺ — 20$</p>
-  </div>
-
-  <div class="price-box">
-    <h3>Monthly</h3>
-    <p>Non-Root: 1000₺ — 40$</p>
-    <p>Root: 700₺ — 25$</p>
-    <p>Emulator: 800₺ — 40$</p>
-  </div>
-
-  <div class="price-box">
-    <h3>Lifetime</h3>
-    <p>Non-Root: 3500₺ — 90$</p>
-    <p>Root: 3000₺ — 80$</p>
-    <p>Emulator: 3500₺ — 90$</p>
-  </div>
-</div>
-
-<!-- INTERNAL -->
-<div class="section">
-  <h2>Critical Ops – INTERNAL</h2>
-
-  <div class="price-box">
-    <h3>Daily</h3>
-    <p>Root: 100₺ — 3$</p>
-    <p>Emulator: 130₺ — 3$</p>
-  </div>
-
-  <div class="price-box">
-    <h3>Weekly</h3>
-    <p>Non-Root: 250₺ — 10$</p>
-    <p>Root: 200₺ — 5$</p>
-    <p>Emulator: 250₺ — 7$</p>
-  </div>
-
-  <div class="price-box">
-    <h3>Monthly</h3>
-    <p>Non-Root: 650₺ — 20$</p>
-    <p>Root: 550₺ — 15$</p>
-    <p>Emulator: 600₺ — 17$</p>
-  </div>
-</div>
-
-<div class="footer">
-© WHSKY – All Rights Reserved
-</div>
-
-</div>
-
-</body>
-  </html>
+</div><div class="footer">© WHSKY</div>
+</div><script>
+setTimeout(()=>{
+  document.getElementById('intro').style.display='none';
+  document.getElementById('app').style.display='block';
+},3000);
+</script></body>
+</html>
